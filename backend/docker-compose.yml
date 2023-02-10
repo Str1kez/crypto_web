@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  db:
+    container_name: 'crypto_web_db'
+    image: 'postgres:15'
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - '${POSTGRES_PORT}:5432'
