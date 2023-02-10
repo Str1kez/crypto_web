@@ -9,3 +9,9 @@ services:
       - .env
     ports:
       - '${POSTGRES_PORT}:5432'
+    volumes:
+      - 'db-data:/var/lib/postgresql/data'
+
+volumes:
+  db-data:
+
