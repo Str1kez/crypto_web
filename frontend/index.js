@@ -1,5 +1,10 @@
 const backend_url = "http://localhost:8001/api/v1/auth/signup"
 
+const web3 = window.Web3;
+
+// Hashing
+console.log(web3.utils.sha3('hello'))
+
 const form = document.forms.signup;
 form.addEventListener(
   "submit",
