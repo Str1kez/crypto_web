@@ -1,4 +1,4 @@
-from server.tools.hash import password_hash
+from server.tools.hash import get_hash
 
 
-__all__ = ["password_hash"]
+__all__ = ["get_hash"]

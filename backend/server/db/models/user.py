@@ -1,5 +1,5 @@
 from sqlalchemy import VARCHAR, Column
-from sqlalchemy.dialects.postgresql import TEXT, UUID
+from sqlalchemy.dialects.postgresql import BIGINT, TEXT, UUID
 from sqlalchemy.sql import func
 
 from server.db import DeclarativeBase
@@ -23,4 +23,8 @@ class User(DeclarativeBase):
     password = Column(
         TEXT,
         nullable=False,
+    )
+    time_label = Column(
+        BIGINT,
+        nullable=True,
     )

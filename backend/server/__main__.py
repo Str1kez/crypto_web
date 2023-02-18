@@ -14,8 +14,8 @@ def bind_routes(app: FastAPI):
 
 def add_cors(app: FastAPI):
     origins = [
-            "*",
-            ]
+        "*",
+    ]
 
     app.add_middleware(
         CORSMiddleware,
