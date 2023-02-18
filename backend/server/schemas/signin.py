@@ -11,4 +11,4 @@ class CodeResponse(BaseModel):
 
 class SignInRequest(BaseModel):
     username: str = Field(..., min_length=5, max_length=30)
-    password_hash: str = Field(..., max_length=67, min_length=67)
+    password_hash: str = Field(..., max_length=66, min_length=66)

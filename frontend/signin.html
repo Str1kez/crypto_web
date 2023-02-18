@@ -15,9 +15,9 @@
         <div class="card bg-grey shadow-lg">
           <div class="card-body bg-dark text-white p-5">
           <div id="error"role="alert" class="alert alert-danger" hidden="true"></div>
-          <div id="success"role="alert" class="alert alert-success" hidden="true">You are registered now!!!</div>
-            <form class="mb-3 mt-md-4" method="POST" name="signup">
-              <h2 class="fw-bold mb-2 text-uppercase ">Registration</h2>
+          <div id="success"role="alert" class="alert alert-success" hidden="true">You are in!!!</div>
+            <form class="mb-3 mt-md-4" method="POST" name="signin">
+              <h2 class="fw-bold mb-2 text-uppercase ">Log In</h2>
               <p class=" mb-5">Please enter your username and password!</p>
               <div class="mb-3">
                 <label for="username" class="form-label ">Username</label>
@@ -28,12 +28,12 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="********">
               </div>
               <div class="d-grid">
-                <button class="btn btn-outline-white bg-white" type="submit">Sign Up</button>
+                <button class="btn btn-outline-white bg-white" type="submit">Sign In</button>
               </div>
             </form>
             <div>
-              <p class="mb-0  text-center">Do you have an account? <a class="link-danger" href="signin.html"
-                  class="text-primary fw-bold">Sign In</a></p>
+              <p class="mb-0  text-center">Did you forget a password? <a class="link-danger" href="forgot.html"
+                  class="text-primary fw-bold">Forgot Password</a></p>
             </div>
 
           </div>
@@ -42,7 +42,7 @@
     </div>
   </div>
 </div>
-
   </body>
-  <script src="js/signup.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="js/signin.js"></script>
 </html>
