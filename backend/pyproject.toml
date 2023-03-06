@@ -17,6 +17,7 @@ python-dotenv = "^0.21.1"
 psycopg2 = "^2.9.5"
 python-multipart = "^0.0.5"
 web3 = {git = "https://github.com/ethereum/web3.py.git"}
+redis = "^4.5.1"
 
 
 [tool.poetry.group.dev.dependencies]

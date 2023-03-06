@@ -24,6 +24,8 @@ class DefaultSettings(BaseSettings):
     DB_CONNECT_RETRY: int = int(environ.get("DB_CONNECT_RETRY", 20))
     DB_POOL_SIZE: int = int(environ.get("DB_POOL_SIZE", 15))
 
+    CACHE_URL: str = environ.get("CACHE_URL", "redis://localhost")
+
     PASSWORD_SALT: str = environ.get("PASSWORD_SALT", "example")
 
     @property

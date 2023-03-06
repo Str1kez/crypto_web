@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="vh-100 bg-secondary d-flex justify-content-center align-items-center">
+  <div class="container"> 
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="border border-3 border-danger"></div>
+        <div class="card bg-grey shadow-lg">
+          <div class="card-body bg-dark text-white p-5">
+            <div id="error_chat"role="alert" class="alert alert-danger" hidden="true"></div>
+            <div id="success_chat"role="alert" class="alert alert-success" hidden="true"></div>
+            <h2 class="fw-bold mb-2 text-uppercase ">Chatting</h2>
+            <textarea id="textarea_chat" class="form-control mb-3" rows="10" cols="34"></textarea>
+            <div class="d-grid">
+              <button id="chat_button" class="btn btn-outline-white bg-white" type="send">Send</button>
+            </div>
+            <div id="error_message"role="alert" class="alert alert-danger" hidden="true"></div>
+            <div id="success_message"role="alert" class="alert alert-success" hidden="true"></div>
+            <h2 class="fw-bold mb-2 mt-3 text-uppercase ">Get Message</h2>
+            <textarea id="textarea_message" class="form-control mb-3" rows="10" cols="34" readonly></textarea>
+            <div class="d-grid">
+              <button id="message_button" class="btn btn-outline-white bg-white" type="send">Get</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  <script src="js/message.js"></script>
+</html>

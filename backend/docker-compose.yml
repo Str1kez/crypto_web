@@ -11,6 +11,12 @@ services:
       - '${POSTGRES_PORT}:5432'
     volumes:
       - 'db-data:/var/lib/postgresql/data'
+  cache:
+    container_name: 'redis_cache'
+    image: 'redis:7.0.9'
+    restart: on-failure
+    ports:
+      - "6379:6379"
 
 volumes:
   db-data:

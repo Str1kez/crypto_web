@@ -55,9 +55,7 @@ async function signin(formData, code, success_field) {
     })
     if (request.ok && request.status == 202) {
         success_field.hidden = false
-        success_field.innerHTML = `Hello, ${formData.get(
-            'username'
-        )}! <br /> You are logged in!`
+        success_field.innerHTML = `Hello, ${formData.get('username')}! <br /> You are logged in!`
         return formData.get('username')
     }
     const json = await request.json()
@@ -92,10 +90,17 @@ async function generate_key(data) {
         console.log(data)
         const key = fastBinPow(BigInt(data.A), b, BigInt(data.p))
         console.log(`key = ${key}`)
-        return
+        return { key: key, username: data.username }
     }
     const json = await request.json()
     throw new Error(JSON.stringify(json))
+}
+
+function saveKey({ key, username }, field) {
+    localStorage.setItem('username', username)
+    localStorage.setItem(username, key)
+    field.innerHTML += `<br /> <a class="link-danger" href="message.html"
+                  class="text-primary fw-bold">Chatting with server</a>`
 }
 
 function errorHandler(error, err, success) {
@@ -129,6 +134,7 @@ form.addEventListener(
             .then((code) => signin(formData, code, success_output))
             .then((username) => get_exchange_params(username))
             .then((data) => generate_key(data))
+            .then((key) => saveKey(key, success_output))
             .catch((error) => errorHandler(error, error_output, success_output))
 
         event.preventDefault()
