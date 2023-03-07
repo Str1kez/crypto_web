@@ -1,8 +1,8 @@
 function fastBinPow(number, exp, mod) {
-    let result = 1
-    while (exp !== 0) {
-        if (exp & (1 === 1)) result = (result * number) % mod
-        exp >>>= 1
+    let result = 1n
+    while (exp !== 0n) {
+        if (exp % 2n === 1n) result = (result * number) % mod
+        exp /= 2n
         number = (number * number) % mod
     }
     return result
@@ -11,6 +11,8 @@ function fastBinPow(number, exp, mod) {
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min)) + min
 }
+
+export { fastBinPow, getRandomArbitrary }
 
 // ! Не нужны
 

@@ -1,23 +1,12 @@
+import { fastBinPow, getRandomArbitrary } from './tools/diffie_hellman.js'
+import { errorHandler } from './error.js'
+
 const web3 = window.Web3
 const signin_url = 'http://localhost:8001/api/v1/auth/signin'
 const code_url = 'http://localhost:8001/api/v1/auth/code'
 const exchange_request_url = 'http://localhost:8001/api/v1/key/request'
 const exchange_perform_url = 'http://localhost:8001/api/v1/key/exchange'
 const bitLength = 128
-
-function fastBinPow(number, exp, mod) {
-    let result = 1n
-    while (exp !== 0n) {
-        if (exp % 2n === 1n) result = (result * number) % mod
-        exp /= 2n
-        number = (number * number) % mod
-    }
-    return result
-}
-
-function getRandomArbitrary(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min
-}
 
 function performPassword(password, codeHash) {
     const passwordHash = web3.utils.sha3(password)
@@ -101,22 +90,6 @@ function saveKey({ key, username }, field) {
     localStorage.setItem(username, key)
     field.innerHTML += `<br /> <a class="link-danger" href="message.html"
                   class="text-primary fw-bold">Chatting with server</a>`
-}
-
-function errorHandler(error, err, success) {
-    data = JSON.parse(error.message)
-    err.hidden = false
-    success.hidden = true
-    if (data.message != undefined) {
-        err.innerHTML = data.message
-        return
-    }
-    let errors = ''
-    console.log(data)
-    for (let x of data['detail']) {
-        errors += x.loc.pop() + ': ' + x.msg + ' <br />'
-    }
-    err.innerHTML = errors
 }
 
 const form = document.forms.signin
