@@ -27,6 +27,7 @@ class DefaultSettings(BaseSettings):
     CACHE_URL: str = environ.get("CACHE_URL", "redis://localhost")
 
     PASSWORD_SALT: str = environ.get("PASSWORD_SALT", "example")
+    KEY_BIT_LEN: int = 16
 
     @property
     def database_settings(self) -> dict:

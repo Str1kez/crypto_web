@@ -13,8 +13,8 @@ from web3 import Web3
 #     return "".join(result)
 
 
-def get_hash(password: str) -> str:
+def get_hash(data: str) -> str:
     # salty_password = __paste_salt(password)
     # password_in_bytes = str.encode(password)
-    hash_obj = Web3.keccak(text=password)
+    hash_obj = Web3.keccak(text=data)
     return hash_obj.hex()
