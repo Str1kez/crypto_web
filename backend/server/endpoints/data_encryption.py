@@ -45,9 +45,9 @@ async def handle_external_message(message: EncryptionMessage, key: str = Depends
     )
     decrypted_message = rc4(message.text, key)
     print("Расшифровка сообщения:", decrypted_message, sep="\n", end="\n\n")
-    print(message.signature[0], message.exposed_key, message.n)
-    # signature_verify(decrypted_message, int(message.exposed_key), int(message.n), message.signature)
-    # print("Подлинность подтверждена!", end="\n\n")
+    # print(message.signature[0], message.exposed_key, message.n)
+    signature_verify(decrypted_message, int(message.exposed_key), int(message.n), message.signature)
+    print("Подлинность подтверждена!", end="\n\n")
 
 
 @api.get(

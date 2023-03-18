@@ -1,8 +1,10 @@
 function fastBinPow(number, exp, mod) {
     let result = 1n
     while (exp !== 0n) {
-        if (exp % 2n === 1n) result = (result * number) % mod
-        exp /= 2n
+        if (exp % 2n === 1n) {
+            result = (result * number) % mod
+        }
+        exp >>= 1n
         number = (number * number) % mod
     }
     return result

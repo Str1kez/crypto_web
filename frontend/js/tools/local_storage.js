@@ -10,10 +10,11 @@ export function getUserWithKey() {
 }
 
 export function generateRSAKeys() {
-    const p = get_prime(16n)
-    let q = get_prime(16n)
+    const bitSize = 16n
+    const p = get_prime(bitSize)
+    let q = get_prime(bitSize)
     while (q === p) {
-        q = get_prime(16n)
+        q = get_prime(bitSize)
     }
     const public_key = get_public_key(euler_function(p, q))
     const private_key = get_private_key(euler_function(p, q), public_key)

@@ -5,25 +5,34 @@ function euler_function(p, q) {
 }
 
 function miller_rabin(num, rounds = 5n) {
-    if (num == 2n) return true
-    if (num % 2n == 0n) return false
+    if (num <= 1n || (num > 2n && num % 2n === 0n)) {
+        return false
+    }
 
     let t = num - 1n
     let s = 0n
     while (t % 2n == 0n) {
-        t /= 2n
+        t >>= 1n
         s++
     }
     for (let i = 0n; i < rounds; i++) {
         let a = getBigRandomArbitrary(2n, num - 1n)
         let x = fastBinPow(a, t, num)
-        if (x === 1n || x === num - 1n) continue
+        if (x === 1n || x === num - 1n) {
+            continue
+        }
+        let continueLoop = false
         for (let j = 0n; j < s - 1n; j++) {
             x = fastBinPow(x, 2n, num)
-            if (x === 1n) return false
-            if (x === num - 1n) break
-            if (j === s - 2n) return false
+            if (x === num - 1n) {
+                continueLoop = true
+                break
+            }
         }
+        if (continueLoop) {
+            continue
+        }
+        return false
     }
     return true
 }

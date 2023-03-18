@@ -2,7 +2,7 @@ import { rc4 } from './tools/rc4.js'
 import { errorHandler } from './error.js'
 import { generateRSAKeys, getUserWithKey } from './tools/local_storage.js'
 import { getHash } from './tools/hash.js'
-import { getSignature } from './tools/signature.js'
+import { getSignature, verifySignature } from './tools/signature.js'
 
 const url = 'http://localhost:8001/api/v1/encryption/message'
 const chatButton = document.getElementById('chat_button')
@@ -75,6 +75,18 @@ messageButton.onclick = async () => {
         messageSuccess.hidden = false
         messageSuccess.innerHTML = 'Сообщение получено!'
         console.log(`Получил сообщение от сервера:\n${response.text}`)
+        if (
+            !verifySignature(
+                getHash(messageText.value),
+                BigInt(response.exposed_key),
+                BigInt(response.n),
+                response.signature
+            )
+        ) {
+            errorHandler(new Error(JSON.stringify({ message: 'Не подтвердено ЭЦП' })), messageError, messageSuccess)
+        } else {
+            console.log('Подтверждено ЭЦП')
+        }
         return
     }
     errorHandler(new Error(JSON.stringify(response)), messageError, messageSuccess)
